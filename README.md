@@ -1,2 +1,2 @@
 # shadcn-phone-input-svelte
-A port of shadcn-phone-input to Svelte.
+This project was created for you with the help of [template-factory](https://github.com/ieedan/template-factory-js)
