@@ -19,6 +19,7 @@
 	export let order: (a: Country, b: Country) => number = (a, b) => {
 		return a.name.localeCompare(b.name);
 	};
+	export let focusOnClose: HTMLInputElement;
 
 	let open = false;
 
@@ -29,11 +30,18 @@
 	};
 </script>
 
-<Popover.Root bind:open>
-	<Popover.Trigger>
+<Popover.Root
+	bind:open
+	onOpenChange={(open) => {
+		if (!open) focusOnClose.focus();
+	}}
+	openFocus={focusOnClose}
+>
+	<Popover.Trigger asChild let:builder>
 		<Button
 			type="button"
 			variant="outline"
+			builders={[builder]}
 			class={cn('flex gap-1 rounded-e-none rounded-s-lg px-3')}
 			{disabled}
 		>

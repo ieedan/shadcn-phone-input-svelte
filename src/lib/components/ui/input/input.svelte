@@ -1,26 +1,30 @@
 <script lang="ts">
-	import type { HTMLInputAttributes } from "svelte/elements";
-	import type { InputEvents } from "./index.js";
-	import { cn } from "$lib/utils";
+	import type { HTMLInputAttributes } from 'svelte/elements';
+	import type { InputEvents } from './index.js';
+	import { cn } from '$lib/utils';
 
-	type $$Props = HTMLInputAttributes;
+	type $$Props = HTMLInputAttributes & { el?: HTMLInputElement };
 	type $$Events = InputEvents;
 
-	let className: $$Props["class"] = undefined;
-	export let value: $$Props["value"] = undefined;
+	let className: $$Props['class'] = undefined;
+	export let value: $$Props['value'] = undefined;
 	export { className as class };
+	//++
+	export let el: $$Props['el'] = undefined;
+	//++
 
 	// Workaround for https://github.com/sveltejs/svelte/issues/9305
 	// Fixed in Svelte 5, but not backported to 4.x.
-	export let readonly: $$Props["readonly"] = undefined;
+	export let readonly: $$Props['readonly'] = undefined;
 </script>
 
 <input
 	class={cn(
-		"border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+		'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
 		className
 	)}
 	bind:value
+	bind:this={el}
 	{readonly}
 	on:blur
 	on:change

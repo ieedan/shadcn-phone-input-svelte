@@ -5,12 +5,16 @@
 
   export let countries: Country[];
 
+  export let country: Country | null = null;
+
+  export let el: HTMLInputElement;
+
   export const focus = () => {
-    // el.focus();
+    el.focus();
   }
 </script>
 
 <div class="flex place-items-center">
-  <CountrySelector {countries} on:select={focus}/>
-  <Input class="border-border border-s-none rounded-s-none rounded-e-lg w-[212px]"/>
+  <CountrySelector focusOnClose={el} {countries} bind:country on:select={focus}/>
+  <Input bind:el class="border-border border-s-none rounded-s-none rounded-e-lg w-[212px]"/>
 </div>
