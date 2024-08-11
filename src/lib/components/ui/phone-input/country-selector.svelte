@@ -5,24 +5,39 @@
 	import { ScrollArea } from '$lib/components/ui/scroll-area';
 	import { Check, ChevronsUpDown } from 'lucide-svelte';
 	import { cn } from '$lib/utils';
-	import type { Country } from '.';
 	import Flag from './flag.svelte';
+	import { createEventDispatcher } from 'svelte';
+	import type { Country } from '.';
 
+	const dispatch = createEventDispatcher();
+
+	/** List of countries */
 	export let countries: Country[];
 	export let disabled = false;
-
 	export let country: Country | null = null;
+	/** Default ordering is alphabetical by country name supply this function to customize the sorting behavior  */
+	export let order: (a: Country, b: Country) => number = (a, b) => {
+		return a.name.localeCompare(b.name);
+	};
+
+	let open = false;
+
+	const selectCountry = (selected: Country) => {
+		country = selected;
+		open = false;
+		dispatch('select', country);
+	};
 </script>
 
-<Popover.Root>
-	<Popover.Trigger asChild>
+<Popover.Root bind:open>
+	<Popover.Trigger>
 		<Button
 			type="button"
 			variant="outline"
 			class={cn('flex gap-1 rounded-e-none rounded-s-lg px-3')}
 			{disabled}
 		>
-			<Flag {country}/>
+			<Flag {country} />
 			<ChevronsUpDown class={cn('-mr-2 h-4 w-4 opacity-50', disabled ? 'hidden' : 'opacity-100')} />
 		</Button>
 	</Popover.Trigger>
@@ -33,42 +48,20 @@
 					<Command.Input placeholder="Search country..." />
 					<Command.Empty>No country found.</Command.Empty>
 					<Command.Group>
-						{#each countries as country}
-							<Command.Item class="gap-2" value={country.name.official}>
-								<Flag {country}/>
-                                <span class="flex-1 text-sm">{country.name.official}</span>
+						{#each countries.sort(order) as country}
+							<Command.Item
+								class="gap-2"
+								value={country.name}
+								onSelect={() => selectCountry(country)}
+							>
+								<Flag {country} />
+								<span class="flex-1 text-sm">{country.name}</span>
 								<span class="text-sm text-foreground/50">
-									+{country.idd.root}
+									+{country.callCode}
 								</span>
 								<Check class="size-4" />
 							</Command.Item>
 						{/each}
-						<!-- {options
-                .filter((x) => x.value)
-                .map((option) => (
-                  <CommandItem
-                    className="gap-2"
-                    key={option.value}
-                    onSelect={() => handleSelect(option.value)}
-                  >
-                    <FlagComponent
-                      country={option.value}
-                      countryName={option.label}
-                    />
-                    <span className="flex-1 text-sm">{option.label}</span>
-                    {option.value && (
-                      <span className="text-sm text-foreground/50">
-                        {`+${RPNInput.getCountryCallingCode(option.value)}`}
-                      </span>
-                    )}
-                    <CheckIcon
-                      className={cn(
-                        "ml-auto h-4 w-4",
-                        option.value === value ? "opacity-100" : "opacity-0",
-                      )}
-                    />
-                  </CommandItem>
-                ))} -->
 					</Command.Group>
 				</ScrollArea>
 			</Command.List>

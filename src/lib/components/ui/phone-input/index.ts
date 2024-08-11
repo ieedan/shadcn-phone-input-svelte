@@ -1,19 +1,9 @@
 import Root from './phone-input.svelte';
 
 export type Country = {
-	flags: {
-		png: string;
-		svg: string;
-		alt: string;
-	};
-	name: {
-		common: string;
-		official: string;
-	};
-	idd: {
-		root: string;
-		suffixes: string[];
-	};
-};
+	flag: string;
+	name: string;
+	callCode: number;
+}
 
 export default Root;

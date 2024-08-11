@@ -1,5 +1,7 @@
+import type { Country } from '.';
+
 // I wish I remembered where I got this if you see this TELL ME
-export const countries = [
+const countries = [
 	{
 		flags: {
 			png: 'https://flagcdn.com/w320/md.png',
@@ -6208,3 +6210,9 @@ export const countries = [
 		}
 	}
 ];
+
+export default countries.map((country) => ({
+	name: country.name.common,
+	flag: country.flags.svg,
+	callCode: parseInt(country.idd.root)
+})) satisfies Country[];
