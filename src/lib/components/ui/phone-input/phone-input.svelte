@@ -7,7 +7,7 @@
 
   export let country: Country | null = null;
 
-  export let el: HTMLInputElement;
+  let el: HTMLInputElement;
 
   export const focus = () => {
     el.focus();
