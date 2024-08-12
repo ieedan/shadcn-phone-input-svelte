@@ -19,6 +19,7 @@
 	import { browser } from '$app/environment';
 	import { Label } from '$lib/components/ui/label';
 	import Link from '$lib/components/ui/link';
+	import Snippet from '$lib/components/ui/snippet/snippet.svelte';
 
 	let value: E164Number;
 	let detailedValue: DetailedValue;
@@ -76,6 +77,46 @@
 					</div>
 				</form>
 			</ExampleContainer>
+			<div class="flex w-full flex-col gap-5">
+				<div>
+					<h2 class="w-full py-2 text-start text-2xl font-semibold">Setup</h2>
+					<Separator />
+				</div>
+				<div class="flex flex-col gap-2">
+					<h3 class="w-full text-start text-lg font-semibold">Install shadcn-svelte via CLI</h3>
+					<p>
+						Run the <code class="rounded-md bg-accent px-1 py-[2px]">shadcn-svelte</code> init command
+						to setup your project:
+					</p>
+					<Snippet code={'npx shadcn-svelte@latest init'} />
+				</div>
+				<div class="flex flex-col gap-2">
+					<h3 class="w-full text-start text-lg font-semibold">Install necessary components</h3>
+					<p>
+						Run the <code class="rounded-md bg-accent px-1 py-[2px]">shadcn-svelte</code> add command
+						to add the components to your project:
+					</p>
+					<Snippet
+						code={`npx shadcn-svelte@latest add button
+npx shadcn-svelte@latest add command
+npx shadcn-svelte@latest add popover
+npx shadcn-svelte@latest add scroll-area`}
+					/>
+				</div>
+				<div class="flex flex-col gap-2">
+					<h3 class="w-full text-start text-lg font-semibold">Install Svelte Tel Input</h3>
+					<Snippet code={'npm install svelte-tel-input'} />
+				</div>
+				<div class="flex flex-col gap-2">
+					<h3 class="w-full text-start text-lg font-semibold">Copy the code</h3>
+					<p>
+						You can find the most recent code <Link
+							href="https://github.com/ieedan/shadcn-phone-input-svelte/tree/main/src/lib/components/ui/phone-input"
+							>here</Link
+						>.
+					</p>
+				</div>
+			</div>
 			<div class="flex w-full flex-col gap-5">
 				<div>
 					<h2 class="w-full py-2 text-start text-2xl font-semibold">Examples</h2>

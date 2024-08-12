@@ -8,7 +8,7 @@
 
 <div class="flex flex-col gap-3 w-full">
 	{#if title}
-		<h3 class="w-full text-start text-xl font-semibold">{title}</h3>
+		<h3 class="w-full text-start text-lg font-semibold">{title}</h3>
 	{/if}
 	<div
 		{...$$restProps}
