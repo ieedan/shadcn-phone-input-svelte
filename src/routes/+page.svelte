@@ -94,7 +94,7 @@
 					<h3 class="w-full text-start text-lg font-semibold">Install necessary components</h3>
 					<p>
 						Run the <code class="rounded-md bg-accent px-1 py-[2px]">shadcn-svelte</code> add command
-						to add the components to your project:
+						to add the necessary components to your project:
 					</p>
 					<Snippet
 						code={`npx shadcn-svelte@latest add button

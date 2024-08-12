@@ -7,3 +7,9 @@ export async function load() {
 
 	return { form };
 }
+
+export const actions = {
+	default: (event) => {
+		
+	}
+}
