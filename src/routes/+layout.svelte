@@ -32,14 +32,14 @@
 	<div
 		class="flex w-full max-w-4xl flex-col justify-between gap-4 md:flex-row md:place-items-center"
 	>
-		<div class="flex place-items-center gap-1 text-muted-foreground">
+		<p class="text-muted-foreground">
 			Crafted by <Link href="https://github.com/omeralpi">Omer Alpi</Link>.
 			Ported to <Link
 				href="https://github.com/sveltejs/svelte"
 				class="text-[#f96743]">Svelte</Link
 			>
 			by <Link href="https://github.com/ieedan">Aidan Bleser</Link>.
-		</div>
+		</p>
 		<div class="flex place-items-center gap-4 text-muted-foreground">
 			<Link href="https://github.com/ieedan/shadcn-phone-input-svelte"
 				>GitHub</Link

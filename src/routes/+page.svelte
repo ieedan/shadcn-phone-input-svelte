@@ -206,7 +206,7 @@ npx shadcn-svelte@latest add scroll-area`}
 							>here</Link
 						>. Or copy it below.
 					</p>
-					<code>`lib/components/ui/phone-input`</code>
+					<code>`src/lib/components/ui/phone-input`</code>
 					<Tabs.Root value="phone-input">
 						<Tabs.List>
 							<Tabs.Trigger value="phone-input" class="font-serif text-xs">

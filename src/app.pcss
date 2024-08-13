@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* For components that need horizontal scrolling */
+.scrollbar-hide {
+	-ms-overflow-style: none; /* Internet Explorer and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
 @layer base {
 	:root {
 		--background: 0 0% 100%;
