@@ -1,0 +1,8 @@
+{
+    "timezone": "UTC",
+    "changeCategories": [
+        "Added",
+        "Changed",
+        "Fixed"
+    ]
+}

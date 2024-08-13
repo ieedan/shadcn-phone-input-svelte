@@ -81,7 +81,15 @@ const commonConfig = {
 			{
 				autoFix: false,
 				cspell: {
-					words: ['shadcn', 'svelte-tel-input', 'sonner', 'cmdk', 'nonblock'],
+					words: [
+						'shadcn',
+						'svelte-tel-input',
+						'sonner',
+						'cmdk',
+						'nonblock',
+						'bunx',
+						'',
+					],
 				},
 			},
 		],

@@ -19,9 +19,14 @@
 	import { browser } from '$app/environment';
 	import { Label } from '$lib/components/ui/label';
 	import Link from '$lib/components/ui/link';
-	import Snippet from '$lib/components/ui/snippet/snippet.svelte';
+	import * as Snippet from '$lib/components/ui/snippet';
 	import { cn } from '$lib/utils';
 	import { toast } from 'svelte-sonner';
+	import * as Tabs from '$lib/components/ui/tabs';
+	import PhoneInputRaw from '$lib/components/ui/phone-input/phone-input.svelte?raw';
+	import FlagRaw from '$lib/components/ui/phone-input/flag.svelte?raw';
+	import IndexRaw from '$lib/components/ui/phone-input/index.ts?raw';
+	import CountrySelectorRaw from '$lib/components/ui/phone-input/country-selector.svelte?raw';
 
 	let value: E164Number;
 	let detailedValue: DetailedValue;
@@ -72,7 +77,7 @@
 		class="flex w-full flex-grow flex-col place-items-center justify-center gap-10"
 	>
 		<div
-			class="flex w-full max-w-2xl flex-col place-items-center justify-center gap-10"
+			class="flex w-full max-w-4xl flex-col place-items-center justify-center gap-10"
 		>
 			<section
 				class="flex max-w-[450px] flex-col place-items-center justify-center gap-5"
@@ -136,7 +141,16 @@
 							>shadcn-svelte</code
 						> init command to setup your project:
 					</p>
-					<Snippet code={'npx shadcn-svelte@latest init'} />
+					<Snippet.Root code={'npx shadcn-svelte@latest init'}>
+						<Snippet.CopyButton
+							code={[
+								{ name: 'npm', code: 'npx shadcn-svelte@latest init' },
+								{ name: 'pnpm', code: 'pnpm dlx shadcn-svelte@latest init' },
+								{ name: 'bun', code: 'bunx shadcn-svelte@latest init' },
+								{ name: 'yarn', code: 'yarn dlx shadcn-svelte@latest init' },
+							]}
+						/>
+					</Snippet.Root>
 				</div>
 				<div class="flex flex-col gap-2">
 					<h3 class="w-full text-start text-lg font-semibold">
@@ -147,27 +161,86 @@
 							>shadcn-svelte</code
 						> add command to add the necessary components to your project:
 					</p>
-					<Snippet
+					<Snippet.Root
 						code={`npx shadcn-svelte@latest add button
 npx shadcn-svelte@latest add command
 npx shadcn-svelte@latest add popover
 npx shadcn-svelte@latest add scroll-area`}
-					/>
+					>
+						<Snippet.CopyButton
+							code={[
+								{
+									name: 'npm',
+									code: 'npx shadcn-svelte@latest add button\nnpx shadcn-svelte@latest add command\nnpx shadcn-svelte@latest add popover\nnpx shadcn-svelte@latest add scroll-area',
+								},
+								{
+									name: 'pnpm',
+									code: 'pnpm dlx shadcn-svelte@latest add button\npnpm dlx shadcn-svelte@latest add command\npnpm dlx shadcn-svelte@latest add popover\npnpm dlx shadcn-svelte@latest add scroll-area',
+								},
+								{
+									name: 'bun',
+									code: 'bunx shadcn-svelte@latest add button\nbunx shadcn-svelte@latest add command\nbunx shadcn-svelte@latest add popover\nbunx shadcn-svelte@latest add scroll-area',
+								},
+								{
+									name: 'yarn',
+									code: 'yarn dlx shadcn-svelte@latest add button\nyarn dlx shadcn-svelte@latest add command\nyarn dlx shadcn-svelte@latest add popover\nyarn dlx shadcn-svelte@latest add scroll-area',
+								},
+							]}
+						/>
+					</Snippet.Root>
 				</div>
 				<div class="flex flex-col gap-2">
 					<h3 class="w-full text-start text-lg font-semibold">
 						Install Svelte Tel Input
 					</h3>
-					<Snippet code={'npm install svelte-tel-input'} />
+					<Snippet.Root code={'npm install svelte-tel-input@latest'}>
+						<Snippet.CopyButton
+							code={[
+								{ name: 'npm', code: 'npm install svelte-tel-input@latest' },
+								{ name: 'pnpm', code: 'pnpm install svelte-tel-input@latest' },
+								{ name: 'bun', code: 'bun install svelte-tel-input@latest' },
+								{ name: 'yarn', code: 'yarn add svelte-tel-input@latest' },
+							]}
+						/>
+					</Snippet.Root>
 				</div>
 				<div class="flex flex-col gap-2">
 					<h3 class="w-full text-start text-lg font-semibold">Copy the code</h3>
 					<p>
-						You can find the most recent code <Link
+						You can find the code <Link
 							href="https://github.com/ieedan/shadcn-phone-input-svelte/tree/main/src/lib/components/ui/phone-input"
 							>here</Link
-						>.
+						>. Or copy it below.
 					</p>
+					<code>`lib/components/ui/phone-input`</code>
+					<Tabs.Root value="phone-input">
+						<Tabs.List>
+							<Tabs.Trigger value="phone-input" class="font-serif text-xs">
+								phone-input.svelte
+							</Tabs.Trigger>
+							<Tabs.Trigger value="country-selector" class="font-serif text-xs">
+								country-selector.svelte
+							</Tabs.Trigger>
+							<Tabs.Trigger value="flag" class="font-serif text-xs">
+								flag.svelte
+							</Tabs.Trigger>
+							<Tabs.Trigger value="index" class="font-serif text-xs">
+								index.ts
+							</Tabs.Trigger>
+						</Tabs.List>
+						<Tabs.Content value="phone-input">
+							<Snippet.Root code={PhoneInputRaw} class="h-[400px]" />
+						</Tabs.Content>
+						<Tabs.Content value="country-selector">
+							<Snippet.Root code={CountrySelectorRaw} class="h-[400px]" />
+						</Tabs.Content>
+						<Tabs.Content value="flag">
+							<Snippet.Root code={FlagRaw} class="h-[400px]" />
+						</Tabs.Content>
+						<Tabs.Content value="index">
+							<Snippet.Root code={IndexRaw} class="h-[400px]" />
+						</Tabs.Content>
+					</Tabs.Root>
 				</div>
 			</div>
 			<div class="flex w-full flex-col gap-5">

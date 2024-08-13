@@ -40,10 +40,6 @@
 		bind:selected={country}
 		on:select={focus}
 	/>
-	<!--
-	     The country binding currently has a type error 
-	 	 may open a PR on svelte-tel-input in the future to resolve.
-	-->
 	<TelInput
 		{...$$restProps}
 		{name}
