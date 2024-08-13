@@ -183,7 +183,7 @@ npx shadcn-svelte@latest add scroll-area`}
 								},
 								{
 									name: 'yarn',
-									code: 'yarn dlx shadcn-svelte@latest add buttonyarn dlx shadcn-svelte@latest add commandyarn dlx shadcn-svelte@latest add popoveryarn dlx shadcn-svelte@latest add scroll-area',
+									code: 'yarn dlx shadcn-svelte@latest add button\nyarn dlx shadcn-svelte@latest add command\nyarn dlx shadcn-svelte@latest add popover\nyarn dlx shadcn-svelte@latest add scroll-area',
 								},
 							]}
 						/>
