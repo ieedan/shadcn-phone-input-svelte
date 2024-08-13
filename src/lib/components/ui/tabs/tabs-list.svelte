@@ -23,7 +23,7 @@
 		scroll();
 		el.addEventListener('scroll', scroll);
 
-		() => {
+		return () => {
 			el.removeEventListener('scroll', scroll);
 		};
 	});
