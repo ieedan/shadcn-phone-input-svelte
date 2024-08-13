@@ -23,6 +23,7 @@
 	export let valid: $$Props['valid'] = false;
 	export let detailedValue: $$Props['detailedValue'] = null;
 	export let order: $$Props['order'] = undefined;
+	export let name: $$Props['name'] = undefined;
 	export { className as class };
 
 	let el: HTMLInputElement;
@@ -38,6 +39,8 @@
 <div class="flex place-items-center">
 	<CountrySelector {order} {countries} bind:selected={country} on:select={focus} />
 	<TelInput
+		{...$$restProps}
+		{name}
 		bind:country
 		bind:detailedValue
 		bind:value

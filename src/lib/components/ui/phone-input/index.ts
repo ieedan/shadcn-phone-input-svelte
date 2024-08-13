@@ -11,6 +11,7 @@ export type Props = {
 	country?: CountryCode | null;
 	defaultCountry?: CountryCode | null;
 	el?: HTMLInputElement;
+	name?: string; 
 	placeholder?: string;
 	disabled?: boolean;
 	readonly?: boolean;

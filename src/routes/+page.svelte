@@ -20,20 +20,40 @@
 	import { Label } from '$lib/components/ui/label';
 	import Link from '$lib/components/ui/link';
 	import Snippet from '$lib/components/ui/snippet/snippet.svelte';
+	import { cn } from '$lib/utils';
+	import { toast } from 'svelte-sonner';
 
 	let value: E164Number;
 	let detailedValue: DetailedValue;
+	let valid = false;
+
+	let showInvalid = false;
 
 	export let data;
 
-	const form = superForm(data.form, {
+	$: if (valid) {
+		showInvalid = false;
+	}
+
+	const {
+		form: formData,
+		message,
+		enhance
+	} = superForm(data.form, {
 		validators: zodClient(formSchema),
-		onUpdated: ({ form: f }) => {
-			// validate
+		onSubmit: ({ cancel }) => {
+			if (!valid) {
+				showInvalid = true;
+				cancel();
+			}
 		}
 	});
 
-	const { form: formData, enhance } = form;
+	message.subscribe((message) => {
+		if (message) {
+			toast.success(message.text, { description: 'Your phone number has been submitted.' });
+		}
+	});
 </script>
 
 <svelte:head>
@@ -60,14 +80,21 @@
 			</section>
 			<ExampleContainer id="try-it-out" class="min-h-[350px]">
 				<form
-					action="/?/phone-number"
 					method="POST"
 					use:enhance
 					class="flex w-full flex-col place-items-center justify-center gap-5"
 				>
 					<div class="flex flex-col gap-2">
-						<Label>Phone Number</Label>
-						<PhoneInput bind:value={$formData.phoneNumber} placeholder="Enter a phone number" />
+						<Label class={cn({ 'text-destructive': showInvalid })}>Phone Number</Label>
+						<PhoneInput
+							bind:valid
+							bind:value={$formData.phoneNumber}
+							name="phoneNumber"
+							placeholder="Enter a phone number"
+						/>
+						{#if showInvalid}
+							<span class="text-destructive">Invalid Phone Number</span>
+						{/if}
 					</div>
 					<div class="flex w-full max-w-[300px] flex-col justify-start gap-5">
 						{#if browser}
