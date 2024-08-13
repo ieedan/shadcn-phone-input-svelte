@@ -15,11 +15,11 @@
 
 <div class="relative">
 	<pre
-		class="rounded-lg border border-border bg-zinc-100 p-4 font-serif text-sm text-muted-foreground dark:bg-zinc-900">
+		class="rounded-lg border border-border bg-zinc-100 p-4 font-serif text-sm text-foreground/75 dark:bg-zinc-900">
 <code>{code}</code></pre>
 	<button
 		on:click={copy}
-		class="absolute right-5 top-[11px] flex size-8 place-items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent"
+		class="absolute right-5 top-[11px] flex size-8 place-items-center justify-center rounded-md text-foreground/75 transition-colors hover:bg-border"
 	>
 		{#if !copied}
 			<div in:scale={{ duration: 150, start: 0.5 }}>
