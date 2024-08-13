@@ -3,7 +3,8 @@
 ## Added
 
 - Added component code to the page
-- Added changelog to `/changelog`
+- Added CHANGELOG.md
+- Added changelog page at `/changelog` as well as navigation to and from it
 
 ## Changed
 

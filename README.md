@@ -38,3 +38,17 @@ You can find the most recent code [here](https://github.com/ieedan/shadcn-phone-
 ## Credits
 
 Huge thanks to the creators of [svelte-tel-input](https://github.com/gyurielf/svelte-tel-input) for making this possible.
+
+## Contributing
+
+Contributions as always are welcomed.
+
+### Changelog
+
+When contributing you'll want to add any changes you make to the changelog you can do this by running:
+
+```bash
+npx changy add
+# or
+npm run changelog:new
+```

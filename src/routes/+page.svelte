@@ -11,7 +11,6 @@
 	import { Button } from '$lib/components/ui/button';
 	import PhoneInput from '$lib/components/ui/phone-input';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
-	import ThemeSelector from '$lib/components/ui/theme-selector/theme-selector.svelte';
 	import type { DetailedValue, E164Number } from 'svelte-tel-input/types';
 	import ExampleContainer from './example-container.svelte';
 	import SuperDebug, { superForm } from 'sveltekit-superforms';
@@ -67,11 +66,6 @@
 	<title>Shadcn Phone Input</title>
 </svelte:head>
 
-<header
-	class="sticky top-0 z-[50] flex place-items-center justify-end px-6 py-4"
->
-	<ThemeSelector />
-</header>
 <main class="flex w-full place-items-center px-6 py-20">
 	<div
 		class="flex w-full flex-grow flex-col place-items-center justify-center gap-10"
@@ -307,16 +301,3 @@ npx shadcn-svelte@latest add scroll-area`}
 		</div>
 	</div>
 </main>
-<footer
-	class="flex h-[96px] place-items-center justify-center gap-1 border-t border-border"
->
-	<div
-		class="flex w-full max-w-2xl place-items-center justify-start gap-1 text-muted-foreground"
-	>
-		Crafted by <Link href="https://github.com/omeralpi">Omer Alpi</Link>. Ported
-		to <Link href="https://github.com/sveltejs/svelte" class="text-[#f96743]"
-			>Svelte</Link
-		>
-		by <Link href="https://github.com/ieedan">Aidan Bleser</Link>.
-	</div>
-</footer>
