@@ -30,4 +30,9 @@ npm install svelte-tel-input
 ```
 
 ### Copy the code
+
 You can find the most recent code [here](https://github.com/ieedan/shadcn-phone-input-svelte/tree/main/src/lib/components/ui/phone-input).
+
+## Credits
+
+Huge thanks to the creators of [svelte-tel-input](https://github.com/gyurielf/svelte-tel-input) for making this possible.
