@@ -13,3 +13,4 @@
 ## Fixed
 
 - Sonner showing up as the wrong color
+- Fixed scroll overflow behavior for tabs on smaller screens
