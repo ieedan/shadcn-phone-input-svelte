@@ -6,6 +6,6 @@
 	import { Toaster } from 'svelte-sonner';
 </script>
 
-<Toaster/>
+<Toaster />
 <ModeWatcher />
 <slot />

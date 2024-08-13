@@ -15,5 +15,5 @@ export const actions = {
 		if (!form.valid) return fail(400, { regForm: form });
 
 		return message(form, { text: 'Success!' });
-	}
+	},
 };

@@ -6,7 +6,7 @@
 	export let title: string | undefined = undefined;
 </script>
 
-<div class="flex flex-col gap-3 w-full">
+<div class="flex w-full flex-col gap-3">
 	{#if title}
 		<h3 class="w-full text-start text-lg font-semibold">{title}</h3>
 	{/if}

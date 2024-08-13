@@ -6,6 +6,9 @@
 	export let href: string;
 </script>
 
-<a {href} class={cn('font-medium underline underline-offset-4 inline', className)}>
-    <slot/>
+<a
+	{href}
+	class={cn('inline font-medium underline underline-offset-4', className)}
+>
+	<slot />
 </a>

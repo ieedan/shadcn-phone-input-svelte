@@ -41,7 +41,12 @@
 			{disabled}
 		>
 			<Flag country={selectedCountry} />
-			<ChevronsUpDown class={cn('-mr-2 h-4 w-4 opacity-50', disabled ? 'hidden' : 'opacity-100')} />
+			<ChevronsUpDown
+				class={cn(
+					'-mr-2 h-4 w-4 opacity-50',
+					disabled ? 'hidden' : 'opacity-100'
+				)}
+			/>
 		</Button>
 	</Popover.Trigger>
 	<Popover.Content class="w-[300px] p-0">

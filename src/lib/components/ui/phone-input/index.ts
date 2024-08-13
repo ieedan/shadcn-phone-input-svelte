@@ -4,14 +4,14 @@ import type {
 	CountryCode,
 	DetailedValue,
 	E164Number,
-	TelInputOptions
+	TelInputOptions,
 } from 'svelte-tel-input/types';
 
 export type Props = {
 	country?: CountryCode | null;
 	defaultCountry?: CountryCode | null;
 	el?: HTMLInputElement;
-	name?: string; 
+	name?: string;
 	placeholder?: string;
 	disabled?: boolean;
 	readonly?: boolean;
@@ -26,7 +26,7 @@ export type Props = {
 export const defaultOptions: TelInputOptions = {
 	spaces: true,
 	autoPlaceholder: false,
-	format: 'international'
+	format: 'international',
 };
 
 export default Root;

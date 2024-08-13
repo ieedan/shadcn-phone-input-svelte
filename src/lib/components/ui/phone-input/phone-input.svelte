@@ -2,11 +2,8 @@
 	import CountrySelector from './country-selector.svelte';
 	import { defaultOptions, type Props } from '.';
 	import { cn } from '$lib/utils';
-	import { createEventDispatcher, onMount } from 'svelte';
 	import { TelInput, normalizedCountries } from 'svelte-tel-input';
 	import 'svelte-tel-input/styles/flags.css';
-
-	const dispatch = createEventDispatcher();
 
 	const countries = normalizedCountries;
 
@@ -37,7 +34,12 @@
 </script>
 
 <div class="flex place-items-center">
-	<CountrySelector {order} {countries} bind:selected={country} on:select={focus} />
+	<CountrySelector
+		{order}
+		{countries}
+		bind:selected={country}
+		on:select={focus}
+	/>
 	<!--
 	     The country binding currently has a type error 
 	 	 may open a PR on svelte-tel-input in the future to resolve.
