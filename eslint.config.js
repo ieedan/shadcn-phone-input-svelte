@@ -157,6 +157,9 @@ export default [
 	},
 	{
 		files: ['**/*.svelte'],
+		rules: {
+			'svelte/no-at-html-tags': 'warn',
+		},
 		languageOptions: {
 			parserOptions: {
 				parser: ts.parser,
