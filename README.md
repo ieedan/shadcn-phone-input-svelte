@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/aa551a41-2255-4536-a387-18e5378ef1f4)
+
 # shadcn-phone-input-svelte
 
 A Svelte port of [shadcn-phone-input](https://github.com/omeralpi/shadcn-phone-input).
