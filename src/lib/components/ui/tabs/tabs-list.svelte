@@ -22,6 +22,10 @@
 	onMount(() => {
 		scroll();
 		el.addEventListener('scroll', scroll);
+
+		() => {
+			el.removeEventListener('scroll', scroll);
+		};
 	});
 </script>
 
