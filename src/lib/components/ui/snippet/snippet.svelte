@@ -1,34 +1,26 @@
 <script lang="ts">
-	import { Check, Copy } from 'lucide-svelte';
-	import { scale } from 'svelte/transition';
+	import { cn } from '$lib/utils';
+	import { rootContext } from '.';
+	import CopyButton from './copy-button.svelte';
 
+	let className: string | null | undefined = undefined;
+	export { className as class };
 	export let code: string;
+	export let showCopy = true;
 
-	let copied = false;
-
-	const copy = async () => {
-		await navigator.clipboard.writeText(code);
-		copied = true;
-		setTimeout(() => (copied = false), 500);
-	};
+	rootContext.init({ code });
 </script>
 
 <div class="relative">
 	<pre
-		class="rounded-lg border border-border bg-zinc-100 p-4 font-serif text-sm text-foreground/75 dark:bg-zinc-900">
+		class={cn(
+			'overflow-x-auto rounded-lg border border-border bg-zinc-100 p-4 font-serif text-sm text-foreground/75 dark:bg-zinc-900',
+			className
+		)}>
 <code>{code}</code></pre>
-	<button
-		on:click={copy}
-		class="absolute right-5 top-[11px] flex size-8 place-items-center justify-center rounded-md text-foreground/75 transition-colors hover:bg-border"
-	>
-		{#if !copied}
-			<div in:scale={{ duration: 150, start: 0.5 }}>
-				<Copy class="size-3" />
-			</div>
-		{:else}
-			<div in:scale={{ duration: 150, start: 0.5 }}>
-				<Check class="size-3" />
-			</div>
+	<slot>
+		{#if showCopy}
+			<CopyButton />
 		{/if}
-	</button>
+	</slot>
 </div>
