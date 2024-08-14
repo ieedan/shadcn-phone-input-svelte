@@ -25,7 +25,7 @@ jobs:
 
       - name: Get Latest Changes 🆕
         run: |
-          output=$(npx changy@latest latest --today --with-date)
+          output=$(npx changy@latest latest --today)
           if [ -z "$output" ]; then
             echo "CHANGELOG_EMPTY=true" >> $GITHUB_ENV
           else
@@ -48,7 +48,7 @@ jobs:
             **If your PR includes user facing changes make sure to add them with `npx changy add`.**
 
             ### How to add a changelog
-            ```
+            ```bash
             npx changy add
             ```
 
