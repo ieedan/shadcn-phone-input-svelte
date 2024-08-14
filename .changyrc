@@ -1,8 +1,9 @@
 {
-    "timezone": "UTC",
-    "changeCategories": [
-        "Added",
-        "Changed",
-        "Fixed"
-    ]
+	"timezone": "UTC",
+	"path": "CHANGELOG.md",
+	"changeCategories": [
+		"Added",
+		"Changed",
+		"Fixed"
+	]
 }
