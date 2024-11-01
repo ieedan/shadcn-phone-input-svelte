@@ -3,10 +3,20 @@
 	import { rootContext } from '.';
 	import CopyButton from './copy-button.svelte';
 
-	let className: string | null | undefined = undefined;
-	export { className as class };
-	export let code: string;
-	export let showCopy = true;
+	
+	interface Props {
+		class?: string | null | undefined;
+		code: string;
+		showCopy?: boolean;
+		children?: import('svelte').Snippet;
+	}
+
+	let {
+		class: className = undefined,
+		code,
+		showCopy = true,
+		children
+	}: Props = $props();
 
 	rootContext.init({ code });
 </script>
@@ -18,9 +28,9 @@
 			className
 		)}>
 <code>{code}</code></pre>
-	<slot>
+	{#if children}{@render children()}{:else}
 		{#if showCopy}
 			<CopyButton />
 		{/if}
-	</slot>
+	{/if}
 </div>

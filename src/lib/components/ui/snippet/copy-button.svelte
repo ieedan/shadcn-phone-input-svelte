@@ -15,9 +15,13 @@
 		code: string;
 	};
 
-	let className: string | null | undefined = undefined;
-	export { className as class };
-	export let code: string | undefined | SnippetOption[] = undefined;
+	
+	interface Props {
+		class?: string | null | undefined;
+		code?: string | undefined | SnippetOption[];
+	}
+
+	let { class: className = undefined, code = $bindable(undefined) }: Props = $props();
 
 	const context = rootContext.get();
 
@@ -26,7 +30,7 @@
 		code = $context.code;
 	}
 
-	let copied = false;
+	let copied = $state(false);
 
 	const copy = async (selected: string | SnippetOption) => {
 		if (typeof selected == 'string') {
@@ -51,16 +55,18 @@
 	</Button>
 {:else if code != undefined}
 	<DropdownMenu.Root>
-		<DropdownMenu.Trigger asChild let:builder>
-			<Button
-				builders={[builder]}
-				variant="ghost"
-				size="icon"
-				class={cn(style(), className)}
-			>
-				<CopyIcon {copied} />
-			</Button>
-		</DropdownMenu.Trigger>
+		<DropdownMenu.Trigger asChild >
+			{#snippet children({ builder })}
+								<Button
+					builders={[builder]}
+					variant="ghost"
+					size="icon"
+					class={cn(style(), className)}
+				>
+					<CopyIcon {copied} />
+				</Button>
+										{/snippet}
+						</DropdownMenu.Trigger>
 		<DropdownMenu.Content align="end">
 			{#each code as { name, code: snippet }}
 				<DropdownMenu.Item on:click={() => copy(snippet)}>

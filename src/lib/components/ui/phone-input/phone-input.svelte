@@ -9,21 +9,40 @@
 
 	type $$Props = Props;
 
-	let className: $$Props['class'] = undefined;
-	export let defaultCountry: $$Props['defaultCountry'] = null;
-	export let country: $$Props['country'] = defaultCountry;
-	export let options: $$Props['options'] = defaultOptions;
-	export let placeholder: $$Props['placeholder'] = undefined;
-	export let readonly: $$Props['readonly'] = false;
-	export let disabled: $$Props['disabled'] = false;
-	export let value: $$Props['value'] = null;
-	export let valid: $$Props['valid'] = false;
-	export let detailedValue: $$Props['detailedValue'] = null;
-	export let order: $$Props['order'] = undefined;
-	export let name: $$Props['name'] = undefined;
-	export { className as class };
+	interface Props_1 {
+		class?: $$Props['class'];
+		defaultCountry?: $$Props['defaultCountry'];
+		country?: $$Props['country'];
+		options?: $$Props['options'];
+		placeholder?: $$Props['placeholder'];
+		readonly?: $$Props['readonly'];
+		disabled?: $$Props['disabled'];
+		value?: $$Props['value'];
+		valid?: $$Props['valid'];
+		detailedValue?: $$Props['detailedValue'];
+		order?: $$Props['order'];
+		name?: $$Props['name'];
+		[key: string]: any
+	}
 
-	let el: HTMLInputElement;
+	let {
+		class: className = undefined,
+		defaultCountry = null,
+		country = $bindable(defaultCountry),
+		options = defaultOptions,
+		placeholder = $bindable(undefined),
+		readonly = $bindable(false),
+		disabled = $bindable(false),
+		value = $bindable(null),
+		valid = $bindable(false),
+		detailedValue = $bindable(null),
+		order = undefined,
+		name = undefined,
+		...rest
+	}: Props_1 = $props();
+	
+
+	let el: HTMLInputElement = $state();
 
 	export const focus = () => {
 		// sort of an after update kinda thing
@@ -41,7 +60,7 @@
 		on:select={focus}
 	/>
 	<TelInput
-		{...$$restProps}
+		{...rest}
 		{name}
 		bind:country
 		bind:detailedValue

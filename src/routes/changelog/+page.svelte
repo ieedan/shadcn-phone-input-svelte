@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let data;
+	interface Props {
+		data: any;
+	}
+
+	let { data }: Props = $props();
 </script>
 
 <main class="flex min-h-svh w-full px-6 py-20">
