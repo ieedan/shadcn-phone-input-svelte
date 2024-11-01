@@ -11,18 +11,27 @@
 
 	const dispatch = createEventDispatcher();
 
-	/** List of countries */
-	export let countries: Country[];
-	export let disabled = false;
-	export let selected: CountryCode | null = null;
-	/** Default ordering is alphabetical by country name supply this function to customize the sorting behavior  */
-	export let order: (a: Country, b: Country) => number = (a, b) => {
-		return a.name.localeCompare(b.name);
-	};
+	interface Props {
+		/** List of countries */
+		countries: Country[];
+		disabled?: boolean;
+		selected?: CountryCode | null;
+		/** Default ordering is alphabetical by country name supply this function to customize the sorting behavior  */
+		order?: (a: Country, b: Country) => number;
+	}
 
-	$: selectedCountry = countries.find((a) => a.iso2 == selected);
+	let {
+		countries,
+		disabled = false,
+		selected = $bindable(null),
+		order = (a, b) => {
+			return a.name.localeCompare(b.name);
+		},
+	}: Props = $props();
 
-	let open = false;
+	let selectedCountry = $derived(countries.find((a) => a.iso2 == selected));
+
+	let open = $state(false);
 
 	const selectCountry = (country: Country) => {
 		selected = country.iso2;
@@ -32,22 +41,24 @@
 </script>
 
 <Popover.Root bind:open>
-	<Popover.Trigger asChild let:builder>
-		<Button
-			type="button"
-			variant="outline"
-			builders={[builder]}
-			class={cn('flex gap-1 rounded-e-none rounded-s-lg px-3')}
-			{disabled}
-		>
-			<Flag country={selectedCountry} />
-			<ChevronsUpDown
-				class={cn(
-					'-mr-2 h-4 w-4 opacity-50',
-					disabled ? 'hidden' : 'opacity-100'
-				)}
-			/>
-		</Button>
+	<Popover.Trigger>
+		{#snippet child({ props })}
+			<Button
+				type="button"
+				variant="outline"
+				class={cn('flex gap-1 rounded-e-none rounded-s-lg px-3')}
+				{disabled}
+				{...props}
+			>
+				<Flag country={selectedCountry} />
+				<ChevronsUpDown
+					class={cn(
+						'-mr-2 h-4 w-4 opacity-50',
+						disabled ? 'hidden' : 'opacity-100'
+					)}
+				/>
+			</Button>
+		{/snippet}
 	</Popover.Trigger>
 	<Popover.Content class="w-[300px] p-0">
 		<Command.Root>

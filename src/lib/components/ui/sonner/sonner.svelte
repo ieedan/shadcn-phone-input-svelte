@@ -5,7 +5,7 @@
 	} from 'svelte-sonner';
 	import { mode } from 'mode-watcher';
 
-	type $$Props = SonnerProps;
+	let restProps: SonnerProps = $props();
 </script>
 
 <Sonner
@@ -22,5 +22,5 @@
 				'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground',
 		},
 	}}
-	{...$$restProps}
+	{...restProps}
 />

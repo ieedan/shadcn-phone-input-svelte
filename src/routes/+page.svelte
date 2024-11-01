@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
 	import { z } from 'zod';
 
 	export const formSchema = z.object({
@@ -27,17 +27,20 @@
 	import IndexRaw from '$lib/components/ui/phone-input/index.ts?raw';
 	import CountrySelectorRaw from '$lib/components/ui/phone-input/country-selector.svelte?raw';
 
-	let value: E164Number;
-	let detailedValue: DetailedValue;
-	let valid = false;
+	let value: E164Number | null = $state(null);
+	let detailedValue: DetailedValue | null = $state(null);
+	let valid = $state(false);
+	let defaultValue: E164Number = $state('+14185438090');
 
-	let showInvalid = false;
+	let showInvalid = $state(false);
 
-	export let data;
+	let { data } = $props();
 
-	$: if (valid) {
-		showInvalid = false;
-	}
+	$effect(() => {
+		if (valid) {
+			showInvalid = false;
+		}
+	});
 
 	const {
 		form: formData,
@@ -252,6 +255,12 @@ npx shadcn-svelte@latest add scroll-area`}
 						bind:value
 						placeholder="Enter a phone number"
 						defaultCountry="US"
+					/>
+				</ExampleContainer>
+				<ExampleContainer class="min-h-[200px]" title="Default Value">
+					<PhoneInput
+						bind:value={defaultValue}
+						placeholder="Enter a phone number"
 					/>
 				</ExampleContainer>
 				<ExampleContainer class="min-h-[200px]" title="Custom Ordering">

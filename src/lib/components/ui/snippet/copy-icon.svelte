@@ -2,7 +2,11 @@
 	import { Check, Copy } from 'lucide-svelte';
 	import { scale } from 'svelte/transition';
 
-	export let copied;
+	type Props = {
+		copied: boolean;
+	};
+
+	let { copied }: Props = $props();
 </script>
 
 {#if !copied}

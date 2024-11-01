@@ -1,9 +1,19 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
+	import type { Snippet } from 'svelte';
 
-	let className: string | undefined | null = null;
-	export { className as class };
-	export let title: string | undefined = undefined;
+	interface Props {
+		class?: string | undefined | null;
+		title?: string | undefined;
+		children?: Snippet;
+	}
+
+	let {
+		class: className = null,
+		title = undefined,
+		children,
+		...rest
+	}: Props = $props();
 </script>
 
 <div class="flex w-full flex-col gap-3">
@@ -11,12 +21,12 @@
 		<h3 class="w-full text-start text-lg font-semibold">{title}</h3>
 	{/if}
 	<div
-		{...$$restProps}
+		{...rest}
 		class={cn(
 			'flex w-full flex-col place-items-center justify-center gap-5 rounded-lg border border-border',
 			className
 		)}
 	>
-		<slot />
+		{@render children?.()}
 	</div>
 </div>

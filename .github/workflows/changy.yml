@@ -13,15 +13,15 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: '18'
+          version: 9.12.3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - name: Get Latest Changes 🆕
         run: |
