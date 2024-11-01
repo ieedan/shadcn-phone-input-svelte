@@ -4,13 +4,8 @@
 		type ToasterProps as SonnerProps,
 	} from 'svelte-sonner';
 	import { mode } from 'mode-watcher';
-	interface Props {
-		[key: string]: any
-	}
 
-	let { ...rest }: Props = $props();
-
-	type $$Props = SonnerProps;
+	let restProps: SonnerProps = $props();
 </script>
 
 <Sonner
@@ -27,5 +22,5 @@
 				'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground',
 		},
 	}}
-	{...rest}
+	{...restProps}
 />

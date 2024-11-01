@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
+	import type { Snippet } from 'svelte';
 
 	type $$Props = DropdownMenuPrimitive.RadioGroupProps;
 
 	interface Props {
 		value?: $$Props['value'];
-		children?: import('svelte').Snippet;
-		[key: string]: any
+		children?: Snippet;
 	}
 
 	let { value = $bindable(undefined), children, ...rest }: Props = $props();

@@ -1,15 +1,19 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
+	import type { Snippet } from 'svelte';
 
-	
 	interface Props {
 		class?: string | undefined | null;
 		title?: string | undefined;
-		children?: import('svelte').Snippet;
-		[key: string]: any
+		children?: Snippet;
 	}
 
-	let { class: className = null, title = undefined, children, ...rest }: Props = $props();
+	let {
+		class: className = null,
+		title = undefined,
+		children,
+		...rest
+	}: Props = $props();
 </script>
 
 <div class="flex w-full flex-col gap-3">

@@ -7,24 +7,6 @@
 
 	const countries = normalizedCountries;
 
-	type $$Props = Props;
-
-	interface Props_1 {
-		class?: $$Props['class'];
-		defaultCountry?: $$Props['defaultCountry'];
-		country?: $$Props['country'];
-		options?: $$Props['options'];
-		placeholder?: $$Props['placeholder'];
-		readonly?: $$Props['readonly'];
-		disabled?: $$Props['disabled'];
-		value?: $$Props['value'];
-		valid?: $$Props['valid'];
-		detailedValue?: $$Props['detailedValue'];
-		order?: $$Props['order'];
-		name?: $$Props['name'];
-		[key: string]: any
-	}
-
 	let {
 		class: className = undefined,
 		defaultCountry = null,
@@ -33,21 +15,20 @@
 		placeholder = $bindable(undefined),
 		readonly = $bindable(false),
 		disabled = $bindable(false),
-		value = $bindable(null),
+		value = $bindable(),
 		valid = $bindable(false),
-		detailedValue = $bindable(null),
+		detailedValue = $bindable(),
 		order = undefined,
 		name = undefined,
 		...rest
-	}: Props_1 = $props();
-	
+	}: Props = $props();
 
-	let el: HTMLInputElement = $state();
+	let el: HTMLInputElement | undefined = $state();
 
 	export const focus = () => {
 		// sort of an after update kinda thing
 		setTimeout(() => {
-			el.focus();
+			el?.focus();
 		}, 0);
 	};
 </script>
@@ -60,7 +41,6 @@
 		on:select={focus}
 	/>
 	<TelInput
-		{...rest}
 		{name}
 		bind:country
 		bind:detailedValue
@@ -76,5 +56,6 @@
 			'flex h-10 w-[212px] rounded-lg rounded-l-none border border-l-0 border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
 			className
 		)}
+		{...rest}
 	/>
 </div>

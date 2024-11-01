@@ -15,13 +15,13 @@
 		code: string;
 	};
 
-	
 	interface Props {
 		class?: string | null | undefined;
 		code?: string | undefined | SnippetOption[];
 	}
 
-	let { class: className = undefined, code = $bindable(undefined) }: Props = $props();
+	let { class: className = undefined, code = $bindable(undefined) }: Props =
+		$props();
 
 	const context = rootContext.get();
 
@@ -46,7 +46,7 @@
 
 {#if typeof code == 'string'}
 	<Button
-		on:click={() => copy(code)}
+		onclick={() => copy(code)}
 		variant="ghost"
 		size="icon"
 		class={cn(style(), className)}
@@ -55,21 +55,21 @@
 	</Button>
 {:else if code != undefined}
 	<DropdownMenu.Root>
-		<DropdownMenu.Trigger asChild >
-			{#snippet children({ builder })}
-								<Button
-					builders={[builder]}
+		<DropdownMenu.Trigger>
+			{#snippet child({ props })}
+				<Button
 					variant="ghost"
 					size="icon"
 					class={cn(style(), className)}
+					{...props}
 				>
 					<CopyIcon {copied} />
 				</Button>
-										{/snippet}
-						</DropdownMenu.Trigger>
+			{/snippet}
+		</DropdownMenu.Trigger>
 		<DropdownMenu.Content align="end">
 			{#each code as { name, code: snippet }}
-				<DropdownMenu.Item on:click={() => copy(snippet)}>
+				<DropdownMenu.Item onclick={() => copy(snippet)}>
 					{name}
 				</DropdownMenu.Item>
 			{/each}

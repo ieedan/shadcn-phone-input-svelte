@@ -8,8 +8,6 @@
 </script>
 
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import { Button } from '$lib/components/ui/button';
 	import PhoneInput from '$lib/components/ui/phone-input';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
@@ -29,15 +27,16 @@
 	import IndexRaw from '$lib/components/ui/phone-input/index.ts?raw';
 	import CountrySelectorRaw from '$lib/components/ui/phone-input/country-selector.svelte?raw';
 
-	let value: E164Number = $state();
-	let detailedValue: DetailedValue = $state();
+	let value: E164Number | null = $state(null);
+	let detailedValue: DetailedValue | null = $state(null);
 	let valid = $state(false);
+	let defaultValue: E164Number = $state('+14185438090');
 
 	let showInvalid = $state(false);
 
 	let { data } = $props();
 
-	run(() => {
+	$effect(() => {
 		if (valid) {
 			showInvalid = false;
 		}
@@ -256,6 +255,12 @@ npx shadcn-svelte@latest add scroll-area`}
 						bind:value
 						placeholder="Enter a phone number"
 						defaultCountry="US"
+					/>
+				</ExampleContainer>
+				<ExampleContainer class="min-h-[200px]" title="Default Value">
+					<PhoneInput
+						bind:value={defaultValue}
+						placeholder="Enter a phone number"
 					/>
 				</ExampleContainer>
 				<ExampleContainer class="min-h-[200px]" title="Custom Ordering">

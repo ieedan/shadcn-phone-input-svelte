@@ -8,9 +8,9 @@
 </script>
 
 <DropdownMenu.Root>
-	<DropdownMenu.Trigger asChild >
-		{#snippet children({ builder })}
-				<Button builders={[builder]} variant="outline" size="icon">
+	<DropdownMenu.Trigger>
+		{#snippet child({ props })}
+			<Button variant="outline" size="icon" {...props}>
 				<Sun
 					class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
 				/>
@@ -19,13 +19,13 @@
 				/>
 				<span class="sr-only">Toggle theme</span>
 			</Button>
-					{/snippet}
-		</DropdownMenu.Trigger>
+		{/snippet}
+	</DropdownMenu.Trigger>
 	<DropdownMenu.Content align="end">
-		<DropdownMenu.Item on:click={() => setMode('light')}
-			>Light</DropdownMenu.Item
-		>
-		<DropdownMenu.Item on:click={() => setMode('dark')}>Dark</DropdownMenu.Item>
-		<DropdownMenu.Item on:click={() => resetMode()}>System</DropdownMenu.Item>
+		<DropdownMenu.Item onclick={() => setMode('light')}>
+			Light
+		</DropdownMenu.Item>
+		<DropdownMenu.Item onclick={() => setMode('dark')}>Dark</DropdownMenu.Item>
+		<DropdownMenu.Item onclick={() => resetMode()}>System</DropdownMenu.Item>
 	</DropdownMenu.Content>
 </DropdownMenu.Root>

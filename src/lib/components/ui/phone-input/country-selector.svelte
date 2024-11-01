@@ -11,8 +11,6 @@
 
 	const dispatch = createEventDispatcher();
 
-	
-	
 	interface Props {
 		/** List of countries */
 		countries: Country[];
@@ -27,8 +25,8 @@
 		disabled = false,
 		selected = $bindable(null),
 		order = (a, b) => {
-		return a.name.localeCompare(b.name);
-	}
+			return a.name.localeCompare(b.name);
+		},
 	}: Props = $props();
 
 	let selectedCountry = $derived(countries.find((a) => a.iso2 == selected));
@@ -43,14 +41,14 @@
 </script>
 
 <Popover.Root bind:open>
-	<Popover.Trigger asChild >
-		{#snippet children({ builder })}
-				<Button
+	<Popover.Trigger>
+		{#snippet child({ props })}
+			<Button
 				type="button"
 				variant="outline"
-				builders={[builder]}
 				class={cn('flex gap-1 rounded-e-none rounded-s-lg px-3')}
 				{disabled}
+				{...props}
 			>
 				<Flag country={selectedCountry} />
 				<ChevronsUpDown
@@ -60,8 +58,8 @@
 					)}
 				/>
 			</Button>
-					{/snippet}
-		</Popover.Trigger>
+		{/snippet}
+	</Popover.Trigger>
 	<Popover.Content class="w-[300px] p-0">
 		<Command.Root>
 			<Command.Input placeholder="Search country..." />

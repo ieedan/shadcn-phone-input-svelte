@@ -1,29 +1,33 @@
 <script lang="ts">
-	import type { Dialog as DialogPrimitive } from 'bits-ui';
-	import type { Command as CommandPrimitive } from 'cmdk-sv';
+	import type {
+		Command as CommandPrimitive,
+		Dialog as DialogPrimitive,
+		WithoutChildrenOrChild,
+	} from 'bits-ui';
+	import type { Snippet } from 'svelte';
 	import Command from './command.svelte';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 
-	type $$Props = DialogPrimitive.Props & CommandPrimitive.CommandProps;
-
-	interface Props {
-		open?: $$Props['open'];
-		value?: $$Props['value'];
-		children?: import('svelte').Snippet;
-		[key: string]: any
-	}
-
-	let { open = $bindable(false), value = $bindable(undefined), children, ...rest }: Props = $props();
+	let {
+		open = $bindable(false),
+		ref = $bindable(null),
+		value = $bindable(''),
+		children,
+		...restProps
+	}: WithoutChildrenOrChild<DialogPrimitive.RootProps> &
+		WithoutChildrenOrChild<CommandPrimitive.RootProps> & {
+			children: Snippet;
+		} = $props();
 </script>
 
-<Dialog.Root bind:open {...rest}>
+<Dialog.Root bind:open {...restProps}>
 	<Dialog.Content class="overflow-hidden p-0 shadow-lg">
 		<Command
-			class="[&_[data-cmdk-group-heading]]:px-2 [&_[data-cmdk-group-heading]]:font-medium [&_[data-cmdk-group-heading]]:text-muted-foreground [&_[data-cmdk-group]:not([hidden])_~[data-cmdk-group]]:pt-0 [&_[data-cmdk-group]]:px-2 [&_[data-cmdk-input-wrapper]_svg]:h-5 [&_[data-cmdk-input-wrapper]_svg]:w-5 [&_[data-cmdk-input]]:h-12 [&_[data-cmdk-item]]:px-2 [&_[data-cmdk-item]]:py-3 [&_[data-cmdk-item]_svg]:h-5 [&_[data-cmdk-item]_svg]:w-5"
-			{...rest}
+			class="[&_[data-command-group]:not([hidden])_~[data-command-group]]:pt-0 [&_[data-command-group]]:px-2 [&_[data-command-input-wrapper]_svg]:h-5 [&_[data-command-input-wrapper]_svg]:w-5 [&_[data-command-input]]:h-12 [&_[data-command-item]]:px-2 [&_[data-command-item]]:py-3 [&_[data-command-item]_svg]:h-5 [&_[data-command-item]_svg]:w-5"
+			{...restProps}
 			bind:value
-		>
-			{@render children?.()}
-		</Command>
+			bind:ref
+			{children}
+		/>
 	</Dialog.Content>
 </Dialog.Root>
