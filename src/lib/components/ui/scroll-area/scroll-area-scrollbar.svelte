@@ -6,9 +6,14 @@
 		orientation?: 'vertical' | 'horizontal';
 	};
 
-	let className: $$Props['class'] = undefined;
-	export let orientation: $$Props['orientation'] = 'vertical';
-	export { className as class };
+	interface Props {
+		class?: $$Props['class'];
+		orientation?: $$Props['orientation'];
+		children?: import('svelte').Snippet;
+	}
+
+	let { class: className = undefined, orientation = 'vertical', children }: Props = $props();
+	
 </script>
 
 <ScrollAreaPrimitive.Scrollbar
@@ -22,7 +27,7 @@
 		className
 	)}
 >
-	<slot />
+	{@render children?.()}
 	<ScrollAreaPrimitive.Thumb
 		class={cn(
 			'relative rounded-full bg-border',

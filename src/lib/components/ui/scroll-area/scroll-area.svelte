@@ -9,20 +9,33 @@
 		scrollbarYClasses?: string;
 	};
 
-	let className: $$Props['class'] = undefined;
-	export { className as class };
-	export let orientation = 'vertical';
-	export let scrollbarXClasses: string = '';
-	export let scrollbarYClasses: string = '';
+	
+	interface Props {
+		class?: $$Props['class'];
+		orientation?: string;
+		scrollbarXClasses?: string;
+		scrollbarYClasses?: string;
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let {
+		class: className = undefined,
+		orientation = 'vertical',
+		scrollbarXClasses = '',
+		scrollbarYClasses = '',
+		children,
+		...rest
+	}: Props = $props();
 </script>
 
 <ScrollAreaPrimitive.Root
-	{...$$restProps}
+	{...rest}
 	class={cn('relative overflow-hidden', className)}
 >
 	<ScrollAreaPrimitive.Viewport class="h-full w-full rounded-[inherit]">
 		<ScrollAreaPrimitive.Content>
-			<slot />
+			{@render children?.()}
 		</ScrollAreaPrimitive.Content>
 	</ScrollAreaPrimitive.Viewport>
 	{#if orientation === 'vertical' || orientation === 'both'}

@@ -9,6 +9,11 @@
 	import { Button } from '$lib/components/ui/button';
 	import { ArrowLeft } from 'lucide-svelte';
 	import { page } from '$app/stores';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 <Toaster />
@@ -25,7 +30,7 @@
 	</div>
 	<ThemeSelector />
 </header>
-<slot />
+{@render children?.()}
 <footer
 	class="flex place-items-center justify-center gap-1 border-t border-border px-6 py-10"
 >

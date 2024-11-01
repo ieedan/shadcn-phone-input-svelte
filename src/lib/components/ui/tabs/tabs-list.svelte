@@ -5,11 +5,17 @@
 
 	type $$Props = TabsPrimitive.ListProps;
 
-	let className: $$Props['class'] = undefined;
-	export { className as class };
-	let el: HTMLDivElement;
+	interface Props {
+		class?: $$Props['class'];
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
 
-	let showBlur = false;
+	let { class: className = undefined, children, ...rest }: Props = $props();
+	
+	let el: HTMLDivElement = $state();
+
+	let showBlur = $state(false);
 
 	const scroll = () => {
 		if (el.offsetWidth + el.scrollLeft < el.scrollWidth) {
@@ -35,9 +41,9 @@
 		className
 	)}
 	bind:el
-	{...$$restProps}
+	{...rest}
 >
-	<slot />
+	{@render children?.()}
 	{#if showBlur}
 		<span class="absolute right-6 h-10 w-6 bg-background bg-opacity-80 blur-lg"
 		></span>

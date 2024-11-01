@@ -3,10 +3,22 @@
 	import { cn, flyAndScale } from '$lib/utils';
 
 	type $$Props = PopoverPrimitive.ContentProps;
-	let className: $$Props['class'] = undefined;
-	export let transition: $$Props['transition'] = flyAndScale;
-	export let transitionConfig: $$Props['transitionConfig'] = undefined;
-	export { className as class };
+	interface Props {
+		class?: $$Props['class'];
+		transition?: $$Props['transition'];
+		transitionConfig?: $$Props['transitionConfig'];
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let {
+		class: className = undefined,
+		transition = flyAndScale,
+		transitionConfig = undefined,
+		children,
+		...rest
+	}: Props = $props();
+	
 </script>
 
 <PopoverPrimitive.Content
@@ -16,7 +28,7 @@
 		'z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none',
 		className
 	)}
-	{...$$restProps}
+	{...rest}
 >
-	<slot />
+	{@render children?.()}
 </PopoverPrimitive.Content>

@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
 	import { z } from 'zod';
 
 	export const formSchema = z.object({
@@ -8,6 +8,8 @@
 </script>
 
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { Button } from '$lib/components/ui/button';
 	import PhoneInput from '$lib/components/ui/phone-input';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
@@ -27,17 +29,19 @@
 	import IndexRaw from '$lib/components/ui/phone-input/index.ts?raw';
 	import CountrySelectorRaw from '$lib/components/ui/phone-input/country-selector.svelte?raw';
 
-	let value: E164Number;
-	let detailedValue: DetailedValue;
-	let valid = false;
+	let value: E164Number = $state();
+	let detailedValue: DetailedValue = $state();
+	let valid = $state(false);
 
-	let showInvalid = false;
+	let showInvalid = $state(false);
 
-	export let data;
+	let { data } = $props();
 
-	$: if (valid) {
-		showInvalid = false;
-	}
+	run(() => {
+		if (valid) {
+			showInvalid = false;
+		}
+	});
 
 	const {
 		form: formData,

@@ -3,11 +3,16 @@
 	import { cn } from '$lib/utils';
 
 	type $$Props = CommandPrimitive.SeparatorProps;
-	let className: string | undefined | null = undefined;
-	export { className as class };
+	interface Props {
+		class?: string | undefined | null;
+		[key: string]: any
+	}
+
+	let { class: className = undefined, ...rest }: Props = $props();
+	
 </script>
 
 <CommandPrimitive.Separator
 	class={cn('-mx-1 h-px bg-border', className)}
-	{...$$restProps}
+	{...rest}
 />
