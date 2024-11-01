@@ -138,13 +138,13 @@
 							>shadcn-svelte</code
 						> init command to setup your project:
 					</p>
-					<Snippet.Root code={'npx shadcn-svelte@latest init'}>
+					<Snippet.Root code={'npx shadcn-svelte@next init'}>
 						<Snippet.CopyButton
 							code={[
-								{ name: 'npm', code: 'npx shadcn-svelte@latest init' },
-								{ name: 'pnpm', code: 'pnpm dlx shadcn-svelte@latest init' },
-								{ name: 'bun', code: 'bunx shadcn-svelte@latest init' },
-								{ name: 'yarn', code: 'yarn dlx shadcn-svelte@latest init' },
+								{ name: 'npm', code: 'npx shadcn-svelte@next init' },
+								{ name: 'pnpm', code: 'pnpm dlx shadcn-svelte@next init' },
+								{ name: 'bun', code: 'bunx shadcn-svelte@next init' },
+								{ name: 'yarn', code: 'yarn dlx shadcn-svelte@next init' },
 							]}
 						/>
 					</Snippet.Root>
@@ -159,28 +159,28 @@
 						> add command to add the necessary components to your project:
 					</p>
 					<Snippet.Root
-						code={`npx shadcn-svelte@latest add button
-npx shadcn-svelte@latest add command
-npx shadcn-svelte@latest add popover
-npx shadcn-svelte@latest add scroll-area`}
+						code={`npx shadcn-svelte@next add button
+npx shadcn-svelte@next add command
+npx shadcn-svelte@next add popover
+npx shadcn-svelte@next add scroll-area`}
 					>
 						<Snippet.CopyButton
 							code={[
 								{
 									name: 'npm',
-									code: 'npx shadcn-svelte@latest add button\nnpx shadcn-svelte@latest add command\nnpx shadcn-svelte@latest add popover\nnpx shadcn-svelte@latest add scroll-area',
+									code: 'npx shadcn-svelte@next add button\nnpx shadcn-svelte@next add command\nnpx shadcn-svelte@next add popover\nnpx shadcn-svelte@next add scroll-area',
 								},
 								{
 									name: 'pnpm',
-									code: 'pnpm dlx shadcn-svelte@latest add button\npnpm dlx shadcn-svelte@latest add command\npnpm dlx shadcn-svelte@latest add popover\npnpm dlx shadcn-svelte@latest add scroll-area',
+									code: 'pnpm dlx shadcn-svelte@next add button\npnpm dlx shadcn-svelte@next add command\npnpm dlx shadcn-svelte@next add popover\npnpm dlx shadcn-svelte@next add scroll-area',
 								},
 								{
 									name: 'bun',
-									code: 'bunx shadcn-svelte@latest add button\nbunx shadcn-svelte@latest add command\nbunx shadcn-svelte@latest add popover\nbunx shadcn-svelte@latest add scroll-area',
+									code: 'bunx shadcn-svelte@next add button\nbunx shadcn-svelte@next add command\nbunx shadcn-svelte@next add popover\nbunx shadcn-svelte@next add scroll-area',
 								},
 								{
 									name: 'yarn',
-									code: 'yarn dlx shadcn-svelte@latest add button\nyarn dlx shadcn-svelte@latest add command\nyarn dlx shadcn-svelte@latest add popover\nyarn dlx shadcn-svelte@latest add scroll-area',
+									code: 'yarn dlx shadcn-svelte@next add button\nyarn dlx shadcn-svelte@next add command\nyarn dlx shadcn-svelte@next add popover\nyarn dlx shadcn-svelte@next add scroll-area',
 								},
 							]}
 						/>
