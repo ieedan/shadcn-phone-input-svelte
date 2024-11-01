@@ -11,7 +11,7 @@ A Svelte port of [shadcn-phone-input](https://github.com/omeralpi/shadcn-phone-i
 Run the `shadcn-svelte` init command to setup your project:
 
 ```bash
-npx shadcn-svelte@latest init
+npx shadcn-svelte@next init
 ```
 
 ### Install necessary components
@@ -19,10 +19,10 @@ npx shadcn-svelte@latest init
 Run the `shadcn-svelte` add command to add the necessary components to your project:
 
 ```bash
-npx shadcn-svelte@latest add button
-npx shadcn-svelte@latest add command
-npx shadcn-svelte@latest add popover
-npx shadcn-svelte@latest add scroll-area
+npx shadcn-svelte@next add button
+npx shadcn-svelte@next add command
+npx shadcn-svelte@next add popover
+npx shadcn-svelte@next add scroll-area
 ```
 
 ### Install Svelte Tel Input
