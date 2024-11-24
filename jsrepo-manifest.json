@@ -16,7 +16,10 @@
 				],
 				"localDependencies": [],
 				"dependencies": [],
-				"devDependencies": ["lucide-svelte@^0.460.1", "svelte-tel-input@^3.5.0"]
+				"devDependencies": [
+					"lucide-svelte@^0.460.1",
+					"svelte-tel-input@^3.5.0"
+				]
 			}
 		]
 	}
