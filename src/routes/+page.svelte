@@ -103,9 +103,9 @@
 					class="flex w-full flex-col place-items-center justify-center gap-5"
 				>
 					<div class="flex flex-col gap-2">
-						<Label class={cn({ 'text-destructive': showInvalid })}
-							>Phone Number</Label
-						>
+						<Label class={cn({ 'text-destructive': showInvalid })}>
+							Phone Number
+						</Label>
 						<PhoneInput
 							bind:valid
 							bind:value={$formData.phoneNumber}
@@ -185,6 +185,41 @@ npx shadcn-svelte@next add scroll-area`}
 							]}
 						/>
 					</Snippet.Root>
+				</div>
+				<div class="flex flex-col gap-2">
+					<div>
+						<h2 class="w-full py-2 text-start text-2xl font-semibold">
+							Add Component
+						</h2>
+						<Separator />
+					</div>
+					<h3 class="w-full text-start text-lg font-semibold">Automatic</h3>
+					<Snippet.Root
+						code={'npx jsrepo add github/ieedan/shadcn-phone-input-svelte/ui/phone-input'}
+					>
+						<Snippet.CopyButton
+							code={[
+								{
+									name: 'npm',
+									code: 'npx jsrepo add github/ieedan/shadcn-phone-input-svelte/ui/phone-input',
+								},
+								{
+									name: 'pnpm',
+									code: 'pnpm dlx jsrepo add github/ieedan/shadcn-phone-input-svelte/ui/phone-input',
+								},
+								{
+									name: 'bun',
+									code: 'bun x jsrepo add github/ieedan/shadcn-phone-input-svelte/ui/phone-input',
+								},
+								{
+									name: 'yarn',
+									code: 'npx jsrepo add github/ieedan/shadcn-phone-input-svelte/ui/phone-input',
+								},
+							]}
+						/>
+					</Snippet.Root>
+					<p>or</p>
+					<h3 class="w-full text-start text-lg font-semibold">Manual</h3>
 				</div>
 				<div class="flex flex-col gap-2">
 					<h3 class="w-full text-start text-lg font-semibold">

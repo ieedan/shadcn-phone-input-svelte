@@ -1,0 +1,23 @@
+[
+	{
+		"name": "ui",
+		"blocks": [
+			{
+				"name": "phone-input",
+				"directory": "src/lib/components/ui/phone-input",
+				"category": "ui",
+				"tests": false,
+				"subdirectory": true,
+				"files": [
+					"country-selector.svelte",
+					"flag.svelte",
+					"index.ts",
+					"phone-input.svelte"
+				],
+				"localDependencies": [],
+				"dependencies": [],
+				"devDependencies": ["lucide-svelte@^0.460.1", "svelte-tel-input@^3.5.0"]
+			}
+		]
+	}
+]
