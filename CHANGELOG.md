@@ -1,3 +1,9 @@
+# 2024.11.23
+
+## Added
+
+- You can now add the phone-input by running `npx jsrepo add github/ieedan/shadcn-phone-input-svelte/ui/phone-input`.
+
 # 2024.11.1
 
 ## Changed
