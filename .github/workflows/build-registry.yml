@@ -20,14 +20,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.3
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      # jsrepo doesn't need any of your
-      # dependencies to be installed to work
+      - name: Install Dependencies
+        run: pnpm install
+
       - name: Build jsrepo-manifest.json
-        run: npx jsrepo build
+        run: pnpm build:registry
 
       - name: Create pull request with changes
         uses: peter-evans/create-pull-request@v7
