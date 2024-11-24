@@ -27,6 +27,16 @@ npx shadcn-svelte@next add scroll-area
 
 ### Install Svelte Tel Input
 
+## Automatic
+
+```bash
+npx jsrepo add github/ieedan/shadcn-phone-input-svelte/ui/phone-input
+```
+
+or
+
+## Manual
+
 ```bash
 npm install svelte-tel-input
 ```
