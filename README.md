@@ -1,3 +1,6 @@
+## (MOVED) See [shadcn-svelte-extras](https://github.com/ieedan/shadcn-svelte-extras)
+This component is now maintained in [shadcn-svelte-extras](https://github.com/ieedan/shadcn-svelte-extras) see there for the latest updates.
+
 [![jsrepo](https://jsrepo.dev/badges/build/passing.svg)](https://jsrepo.dev)
 
 ![image](https://github.com/user-attachments/assets/aa551a41-2255-4536-a387-18e5378ef1f4)
